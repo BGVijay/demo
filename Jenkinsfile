@@ -2,6 +2,7 @@ pipeline {
   environment {
     registry = 'vijaybg213/helloworld'
     registryCredential = 'dockerhub'
+    dockerImage=''
   }
   agent any
   stages {
