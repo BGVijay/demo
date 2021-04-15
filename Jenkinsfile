@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = 'vijaybg213/demo'
+    registry = 'vijaybg213/Helloworld'
     registryCredential = 'dockerhub'
   }
   agent any
@@ -15,7 +15,7 @@ pipeline {
       stage('deploy'){
         steps{
           script{
-          docker.withRegistry( registry, registryCredential ) {
+          docker.withRegistry('', registryCredential ) {
         dockerImage.push()
           }
   }
