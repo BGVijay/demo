@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "vijaybg213/demo-test"
+    registry = 'vijaybg213/img'
     registryCredential = 'dockerhub'
   }
   agent any
@@ -9,7 +9,7 @@ pipeline {
       steps{
         script {
           docker.build registry + ":$BUILD_NUMBER"
-            docker.withRegistry( registry, registryCredential ) {
+            docker.withRegistry( '', registryCredential ) {
         dockerImage.push()
         }
       }
