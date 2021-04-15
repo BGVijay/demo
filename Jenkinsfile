@@ -1,11 +1,18 @@
-node {
-    checkout scm
-
-    docker.withRegistry("vijaybg213/demo-test", 'dockerhub') {
-
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
-
-        /* Push the container to the custom Registry */
-        customImage.push()
+pipeline {
+  environment {
+    registry = "vijaybg213/demo-test"
+    registryCredential = ‘dockerhub’
+  }
+  agent any
+  stages {
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+            docker.withRegistry( registry, registryCredential ) {
+        dockerImage.push()
+        }
+      }
     }
+  }
 }
