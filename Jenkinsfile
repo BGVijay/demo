@@ -9,7 +9,7 @@ pipeline {
       steps{
         script {
           docker.build registry + ":$BUILD_NUMBER"
-            docker.withRegistry( 'vijaybg213/test123', registryCredential ) {
+            docker.withRegistry( registry, registryCredential ) {
         dockerImage.push()
         }
       }
