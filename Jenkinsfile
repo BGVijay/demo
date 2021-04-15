@@ -9,11 +9,17 @@ pipeline {
       steps{
         script {
           docker.build registry + ":$BUILD_NUMBER"
-            docker.withRegistry( registry, registryCredential ) {
-        dockerImage.push()
         }
       }
     }
+      stage('deploy'){
+        steps{
+          script{
+          docker.withRegistry( registry, registryCredential ) {
+        dockerImage.push()
+          }
   }
 }
 }
+    }
+  }
