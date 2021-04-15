@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('vijaybg213/demo-test', 'dockerhub') {
+    docker.withRegistry('https://hub.docker.com/repository/docker/vijaybg213/demo-test', 'dockerhub') {
 
         def customImage = docker.build("my-image:${env.BUILD_ID}")
 
