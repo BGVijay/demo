@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = 'vijaybg213/tomcat01'
+    registry = 'vijaybg213/demo'
     registryCredential = 'dockerhub'
   }
   agent any
